@@ -23,18 +23,26 @@
 <div class="container">
 
 
-    <div class="form-group row add">
-        <div class="col-md-8">
-            <input type="text" class="form-control" id="name" name="name"
-                   placeholder="Enter some name" required>
-            <p class="error text-center alert alert-danger hidden"></p>
-        </div>
-        <div class="col-md-4">
-            <button class="btn btn-primary" type="submit" id="add">
-                <span class="glyphicon glyphicon-plus"></span> ADD
-            </button>
-        </div>
-    </div>
+    {{--<div class="form-group row add">--}}
+        {{--<div class="col-md-8">--}}
+            {{--<input type="text" class="form-control" id="name" name="name"--}}
+                   {{--placeholder="Enter some name" required>--}}
+            {{--<p class="error text-center alert alert-danger hidden"></p>--}}
+        {{--</div>--}}
+        {{--<div class="col-md-4">--}}
+            {{--<button class="btn btn-primary" type="submit" id="add">--}}
+                {{--<span class="glyphicon glyphicon-plus"></span> ADD--}}
+            {{--</button>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+
+
+
+    <button class="new-modal btn btn-danger">
+        <span class="glyphicon glyphicon-trash"></span> New++
+    </button>
+
+
 
 
     {{ csrf_field() }}
@@ -70,15 +78,72 @@
 
 
 
-<div id="myModal" class="modal fade" role="dialog">
+
+<!-- new -->
+<div id="myModalNew" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"></h4>
+                <h4 class="modal-title modal-title-new"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="name">Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name"
+                                   placeholder="Enter some name" required>
+                            <p class="error text-center alert alert-danger hidden"></p>
+                        </div>
+                    </div>
+                </form>
+
+                {{--<div class="form-group row add">--}}
+                    {{--<div class="col-md-8">--}}
+                        {{--<input type="text" class="form-control" id="name" name="name"--}}
+                               {{--placeholder="Enter some name" required>--}}
+                        {{--<p class="error text-center alert alert-danger hidden"></p>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+
+
+
             </div>
 
+            <div class="modal-footer modal-footer-new">
+                <button type="button" class="btn actionBtnNew" data-dismiss="modal">
+                    <span id="footer_action_button_new" class='glyphicon'> </span>
+                </button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                    <span class='glyphicon glyphicon-remove'></span> Close
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- edit -->
+<div id="myModalEdit" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title modal-title-edit"></h4>
+            </div>
 
             <div class="modal-body">
                 <form class="form-horizontal" role="form">
@@ -96,16 +161,41 @@
                     </div>
                 </form>
 
+                <div class="modal-footer modal-footer-edit">
+                    <button type="button" class="btn actionBtnEdit" data-dismiss="modal">
+                        <span id="footer_action_button_edit" class='glyphicon'> </span>
+                    </button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                        <span class='glyphicon glyphicon-remove'></span> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
-                <div class="deleteContent">
+
+
+<!-- delete -->
+<div id="myModalDelete" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title modal-title-delete"></h4>
+            </div>
+
+            <div class="modal-body">
+                <div>
                     Are you Sure you want to delete <span class="dname"></span> ? <span
                             class="hidden did"></span>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn actionBtn" data-dismiss="modal">
-                        <span id="footer_action_button" class='glyphicon'> </span>
+                <div class="modal-footer modal-footer-delete">
+                    <button type="button" class="btn actionBtnDelete" data-dismiss="modal">
+                        <span id="footer_action_button_delete" class='glyphicon'> </span>
                     </button>
                     <button type="button" class="btn btn-warning" data-dismiss="modal">
                         <span class='glyphicon glyphicon-remove'></span> Close
@@ -121,7 +211,10 @@
 
 
 
-    {{--<script src="{{ asset('js/app.js') }}"></script>--}}
+
+
+
+{{--<script src="{{ asset('js/app.js') }}"></script>--}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/script.js') }}"></script>
